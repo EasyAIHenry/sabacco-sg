@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabacco SG | Sabah's Best-Kept Secret, Now in Singapore</title>
+<meta name="description" content="Single-origin Momporok chilli sauce from Kunak, Sabah. Clean heat, real flavour. Now in Singapore.">
+<meta property="og:title" content="Sabacco SG | Sabah's Best-Kept Secret">
+<meta property="og:description" content="Single-origin Momporok chilli from Kunak, Sabah. Clean heat that lets go. Now in Singapore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#ED7A0E; --orange-deep:#C9650A; --ink:#1A1208;
+  --cream:#F6EFE3; --cream-dim:rgba(246,239,227,.72);
+  --green:#1F5E3D; --red:#B3320F;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;color:var(--cream);
+  background:radial-gradient(120% 90% at 70% 20%, var(--orange) 0%, var(--orange-deep) 100%);
+  overflow-x:hidden;
+}
+.mono{font-family:'Space Grotesk',monospace;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.wrap{max-width:1400px;margin:0 auto;padding:0 5vw}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+  padding:1.1rem 5vw;mix-blend-mode:normal;transition:background .4s, backdrop-filter .4s}
+nav.scrolled{background:rgba(26,18,8,.72);backdrop-filter:blur(14px);border-bottom:1px solid rgba(246,239,227,.08)}
+.logo{font-weight:900;font-size:1.15rem;letter-spacing:.02em;color:var(--cream);text-decoration:none}
+.logo span{color:var(--ink);background:var(--cream);padding:.06em .34em;border-radius:.3em;margin-left:.32em;font-size:.78em;vertical-align:middle}
+.nav-cta{font-family:'Space Grotesk',monospace;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cream);text-decoration:none;border:1px solid rgba(246,239,227,.45);border-radius:99px;padding:.62em 1.4em;
+  transition:transform .25s cubic-bezier(.16,1,.3,1), background .25s, color .25s}
+.nav-cta:hover{background:var(--cream);color:var(--ink)}
+.nav-cta:active{transform:scale(.98)}
+
+/* HERO */
+.hero{position:relative;min-height:100dvh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-media{position:absolute;inset:0;z-index:0}
+.hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;object-position:65% 50%}
+.hero-mask{position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(180deg, rgba(201,101,10,.55) 0%, rgba(201,101,10,0) 22%, rgba(201,101,10,0) 58%, rgba(173,85,6,.92) 100%),
+    linear-gradient(90deg, rgba(201,101,10,.78) 0%, rgba(201,101,10,.15) 38%, rgba(201,101,10,0) 60%);}
+.hero-inner{position:relative;z-index:2;width:100%;padding:0 5vw 9vh}
+.hero-kicker{display:inline-flex;align-items:center;gap:.7em;margin-bottom:1.4rem;color:var(--cream-dim)}
+.hero-kicker::before{content:"";display:block;width:2.4em;height:1px;background:var(--cream-dim)}
+h1{font-size:clamp(2.6rem,7.2vw,6.4rem);line-height:.96;letter-spacing:-.03em;font-weight:900;max-width:11ch}
+h1 .outline{color:transparent;-webkit-text-stroke:1.5px var(--cream)}
+.hero-sub{margin-top:1.6rem;max-width:46ch;font-size:clamp(1rem,1.4vw,1.2rem);font-weight:400;color:var(--cream-dim);line-height:1.6}
+.hero-ctas{display:flex;gap:.9rem;margin-top:2.2rem;flex-wrap:wrap}
+.btn{font-family:'Space Grotesk',monospace;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+  border-radius:99px;padding:1em 1.9em;transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s, background .25s, color .25s}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn-solid{background:var(--ink);color:var(--cream);box-shadow:0 14px 30px -12px rgba(26,18,8,.5)}
+.btn-solid:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(246,239,227,.45);color:var(--cream)}
+.btn-ghost:hover{background:rgba(246,239,227,.12)}
+.hero-certs{margin-top:2.6rem;color:rgba(246,239,227,.55)}
+
+/* MARQUEE */
+.marquee{background:var(--ink);overflow:hidden;padding:1.05rem 0;border-top:1px solid rgba(246,239,227,.1);border-bottom:1px solid rgba(246,239,227,.1)}
+.marquee-track{display:flex;width:max-content;animation:scroll 26s linear infinite}
+.marquee-track span{font-weight:800;font-size:1rem;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);padding:0 1.6rem;white-space:nowrap}
+.marquee-track span:nth-child(even){color:transparent;-webkit-text-stroke:1px var(--orange)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SCROLL SEQUENCE */
+.seq{position:relative;height:420vh;background:var(--ink)}
+.seq-sticky{position:sticky;top:0;height:100dvh;overflow:hidden}
+.seq-sticky canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.seq-shade{position:absolute;inset:0;background:
+  linear-gradient(180deg, rgba(26,18,8,.85) 0%, rgba(26,18,8,.08) 26%, rgba(26,18,8,.08) 72%, rgba(26,18,8,.88) 100%)}
+.seq-beat{position:absolute;z-index:3;max-width:520px;opacity:0}
+.seq-beat h2{font-size:clamp(1.9rem,3.6vw,3.2rem);line-height:1.02;letter-spacing:-.02em;font-weight:900;text-shadow:0 2px 30px rgba(26,18,8,.45)}
+.seq-beat p{margin-top:1rem;color:var(--cream-dim);line-height:1.65;font-size:clamp(.95rem,1.2vw,1.08rem);text-shadow:0 1px 18px rgba(26,18,8,.5)}
+.seq-beat .mono{color:var(--orange);display:block;margin-bottom:.9rem}
+.beat-1{top:18vh;left:6vw}
+.beat-2{top:30vh;right:6vw;text-align:right}
+.beat-2 .mono{text-align:right}
+.beat-3{bottom:16vh;left:6vw}
+.seq-progress{position:absolute;right:5vw;bottom:6vh;z-index:4;color:rgba(246,239,227,.5)}
+
+/* VARIANTS */
+.variants{background:var(--cream);color:var(--ink);padding:16vh 0 14vh}
+.variants .wrap>p.mono{color:var(--red)}
+.variants h2{font-size:clamp(2.2rem,5vw,4.4rem);letter-spacing:-.03em;font-weight:900;line-height:.98;margin-top:1rem;max-width:14ch}
+.v-list{margin-top:8vh;border-top:1px solid rgba(26,18,8,.16)}
+.v-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;align-items:baseline;padding:2.6rem 0;border-bottom:1px solid rgba(26,18,8,.16);
+  transition:padding-left .35s cubic-bezier(.16,1,.3,1)}
+.v-row:hover{padding-left:1.2rem}
+.v-row h3{font-size:clamp(1.5rem,2.8vw,2.4rem);font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:.55em}
+.dot{width:.55em;height:.55em;border-radius:50%;flex:none}
+.v-row p{color:rgba(26,18,8,.62);line-height:1.55}
+.v-row .heat{font-family:'Space Grotesk',monospace;font-size:.74rem;letter-spacing:.16em;color:rgba(26,18,8,.5);text-align:right}
+
+/* PAIRINGS */
+.pair{background:var(--ink);padding:16vh 0}
+.pair .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:6vw;align-items:start}
+.pair h2{font-size:clamp(2.2rem,4.6vw,4rem);letter-spacing:-.03em;font-weight:900;line-height:1;position:sticky;top:18vh}
+.pair h2 em{font-style:normal;color:transparent;-webkit-text-stroke:1.2px var(--orange)}
+.pair-list{border-top:1px solid rgba(246,239,227,.14)}
+.pair-item{display:flex;justify-content:space-between;align-items:center;padding:1.5rem .2rem;border-bottom:1px solid rgba(246,239,227,.14);
+  font-size:clamp(1.1rem,1.8vw,1.5rem);font-weight:600;color:var(--cream-dim);transition:color .3s, padding-left .3s}
+.pair-item:hover{color:var(--orange);padding-left:.9rem}
+.pair-item .mono{color:rgba(246,239,227,.4)}
+
+/* BRIDGE */
+.bridge{background:var(--cream);color:var(--ink);padding:16vh 0}
+.bridge .grid{display:grid;grid-template-columns:1fr 1fr;gap:6vw}
+.bridge h2{font-size:clamp(2.2rem,4.6vw,4rem);font-weight:900;letter-spacing:-.03em;line-height:.98}
+.bridge-card{border-top:2px solid var(--ink);padding-top:1.6rem;margin-top:2.4rem}
+.bridge-card .mono{color:var(--red)}
+.bridge-card p{margin-top:.7rem;color:rgba(26,18,8,.65);line-height:1.6;max-width:38ch}
+.bridge-card a.link{display:inline-block;margin-top:1.2rem;color:var(--ink);font-weight:700;text-decoration:none;border-bottom:2px solid var(--orange)}
+.bridge-card a.link:hover{color:var(--red)}
+
+/* FOOTER */
+footer{background:var(--ink);padding:10vh 0 6vh}
+footer .top{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+footer h2{font-size:clamp(2rem,5vw,4.2rem);font-weight:900;letter-spacing:-.03em;line-height:1}
+footer h2 span{color:var(--orange)}
+footer .meta{margin-top:7vh;display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-top:1px solid rgba(246,239,227,.12);padding-top:1.6rem;color:rgba(246,239,227,.45)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--orange)}
+
+/* REVEALS */
+.reveal{opacity:0;transform:translateY(34px)}
+
+@media (max-width:768px){
+  .hero-inner{padding-bottom:14vh}
+  .seq{height:360vh}
+  .seq-beat{left:6vw !important;right:6vw !important;text-align:left !important;max-width:none}
+  .seq-beat .mono{text-align:left !important}
+  .beat-2{top:24vh}
+  .v-row{grid-template-columns:1fr;gap:.5rem}
+  .v-row .heat{text-align:left}
+  .pair .grid,.bridge .grid{grid-template-columns:1fr}
+  .pair h2{position:static;margin-bottom:2rem}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav id="nav">
+  <a class="logo" href="#">SABACCO<span>SG</span></a>
+  <a class="nav-cta" href="https://borneohotsauce.com.sg/shop" target="_blank" rel="noopener">Where to buy</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-media">
+    <video id="heroVideo" autoplay muted loop playsinline poster="assets/hero_poster.jpg">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-mask"></div>
+  <div class="hero-inner">
+    <span class="hero-kicker mono">Single origin · Kunak, Sabah</span>
+    <h1>SABAH'S BEST-KEPT SECRET. <span class="outline">NOW IN SINGAPORE.</span></h1>
+    <p class="hero-sub">Sabacco is built on the Momporok, a chilli that grows in one place on Earth. Clean heat that hits bright and lets go. No lingering burn. No drama.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-solid" href="https://borneohotsauce.com.sg/shop" target="_blank" rel="noopener">Where to buy</a>
+      <a class="btn btn-ghost" href="#story">Taste the story</a>
+    </div>
+    <p class="hero-certs mono">HACCP · MeSTI · Halal certified</p>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Momporok</span><span>Kunak</span><span>Sabah</span><span>Clean Heat</span><span>Real Flavour</span><span>Since 2021</span>
+    <span>Momporok</span><span>Kunak</span><span>Sabah</span><span>Clean Heat</span><span>Real Flavour</span><span>Since 2021</span>
+  </div>
+</div>
+
+<section class="seq" id="story">
+  <div class="seq-sticky">
+    <canvas id="seqCanvas"></canvas>
+    <div class="seq-shade"></div>
+    <div class="seq-beat beat-1">
+      <span class="mono">01 / Origin</span>
+      <h2>ONE CHILLI. ONE PLACE ON EARTH.</h2>
+      <p>The Momporok grows wild in the volcanic marshlands of Kunak, Sabah. Foraged at Tamu markets, its seeds carried by the Bulbul bird on the label. Nobody else can grow this. Nobody else can copy it.</p>
+    </div>
+    <div class="seq-beat beat-2">
+      <span class="mono">02 / The Heat</span>
+      <h2>CLEAN HEAT. REAL FLAVOUR.</h2>
+      <p>A bright, sharp kick that lifts the dish and lets go. Built for food, not for showing off. This is the sauce for people who actually eat chilli, not just post about it.</p>
+    </div>
+    <div class="seq-beat beat-3">
+      <span class="mono">03 / The Journey</span>
+      <h2>FROM SABAH MARKETS TO SINGAPORE TABLES.</h2>
+      <p>Cooked and bottled by The Sabah Chilli Co. under SugarBun. Certified, shelf-ready and already a household name across East Malaysia. Singapore, you are next.</p>
+    </div>
+    <span class="seq-progress mono" id="seqProgress">000 / 000</span>
+  </div>
+</section>
+
+<section class="variants">
+  <div class="wrap">
+    <p class="mono reveal">The range</p>
+    <h2 class="reveal">THREE BOTTLES. ONE WILD CHILLI.</h2>
+    <div class="v-list">
+      <div class="v-row reveal">
+        <h3><span class="dot" style="background:var(--red)"></span>Pedas Original</h3>
+        <p>The signature. Amber heat that goes with everything you already eat.</p>
+        <span class="heat">Heat 3 / 5</span>
+      </div>
+      <div class="v-row reveal">
+        <h3><span class="dot" style="background:var(--green)"></span>Hijau Green</h3>
+        <p>Sharper, herbaceous, a little dangerous. For the ones who ask for extra.</p>
+        <span class="heat">Heat 4 / 5</span>
+      </div>
+      <div class="v-row reveal">
+        <h3><span class="dot" style="background:#D9A013"></span>Pedas Manis · Sweet &amp; Spicy</h3>
+        <p>The gateway bottle. Sweet first, sneaky later. Start your friends here.</p>
+        <span class="heat">Heat 2 / 5</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pair">
+  <div class="wrap grid">
+    <h2 class="reveal">WHAT WOULD YOU PUT <em>SABAH</em> ON?</h2>
+    <div>
+      <div class="pair-list reveal">
+        <div class="pair-item"><span>Nasi lemak</span><span class="mono">Obviously</span></div>
+        <div class="pair-item"><span>Chicken rice</span><span class="mono">Upgrade</span></div>
+        <div class="pair-item"><span>Roti prata</span><span class="mono">Trust us</span></div>
+        <div class="pair-item"><span>Fried eggs</span><span class="mono">Every morning</span></div>
+        <div class="pair-item"><span>Zi char, everything</span><span class="mono">Goes</span></div>
+        <div class="pair-item"><span>Maggi at 2am</span><span class="mono">Elite</span></div>
+      </div>
+      <p class="hero-sub reveal" style="margin-top:2rem">Can Singapore handle Sabah heat? Street taste-tests landing on @sabacco.sg soon. Bring your spice tolerance and a witness.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bridge">
+  <div class="wrap">
+    <h2 class="reveal">FIND US TWICE.</h2>
+    <div class="grid">
+      <div class="bridge-card reveal">
+        <span class="mono">On your feed</span>
+        <p><strong>@sabacco.sg</strong> on Instagram and TikTok. Origin films, ranked-heat trials and real first reactions from the streets of Singapore. Launching soon.</p>
+      </div>
+      <div class="bridge-card reveal">
+        <span class="mono">On the shelf</span>
+        <p>In Singapore, Sabacco pours from the <strong>Borneo Hot Sauce</strong> storefront. Same Sabah fire, local shelf. Delivered island-wide.</p>
+        <a class="link" href="https://borneohotsauce.com.sg/shop" target="_blank" rel="noopener">Shop Borneo Hot Sauce →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <h2 class="reveal">TASTE IT ONCE.<br><span>TELL EVERYONE.</span></h2>
+      <a class="btn btn-ghost reveal" href="https://borneohotsauce.com.sg/shop" target="_blank" rel="noopener">Get a bottle</a>
+    </div>
+    <div class="meta">
+      <span>Sabacco · The Sabah Chilli Co. · Kunak, Sabah</span>
+      <span>Demo experience built by the <a href="https://www.tristeps.co" target="_blank" rel="noopener"><strong>Tristeps AI Engine</strong></a> · <a href="mailto:hello@tristeps.co">hello@tristeps.co</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* nav state */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), {passive:true});
+
+/* generic reveals */
+document.querySelectorAll('.reveal').forEach(el => {
+  gsap.fromTo(el, {opacity:0, y:34}, {
+    opacity:1, y:0, duration:.9, ease:'power3.out',
+    scrollTrigger:{trigger:el, start:'top 86%'}
+  });
+});
+
+/* ----- frame sequence scrub ----- */
+const FRAME_COUNT = 61;
+const framePath = i => `assets/frames/frame_${String(i+1).padStart(3,'0')}.jpg`;
+const canvas = document.getElementById('seqCanvas');
+const ctx = canvas.getContext('2d');
+const progressEl = document.getElementById('seqProgress');
+const images = [];
+let loaded = 0;
+const state = {frame:0};
+
+function sizeCanvas(){
+  canvas.width = innerWidth * Math.min(devicePixelRatio,2);
+  canvas.height = innerHeight * Math.min(devicePixelRatio,2);
+  draw();
+}
+function draw(){
+  const img = images[state.frame];
+  if(!img || !img.complete) return;
+  const cw = canvas.width, ch = canvas.height;
+  const ir = img.width / img.height, cr = cw / ch;
+  let dw, dh, dx, dy;
+  if(cr > ir){ dw = cw; dh = cw / ir; dx = 0; dy = (ch - dh)/2; }
+  else { dh = ch; dw = ch * ir; dy = 0; dx = (cw - dw)/2; }
+  ctx.clearRect(0,0,cw,ch);
+  ctx.drawImage(img, dx, dy, dw, dh);
+  progressEl.textContent = `${String(state.frame+1).padStart(3,'0')} / ${String(FRAME_COUNT).padStart(3,'0')}`;
+}
+for(let i=0;i<FRAME_COUNT;i++){
+  const img = new Image();
+  img.src = framePath(i);
+  img.onload = () => { if(++loaded===1) draw(); };
+  images.push(img);
+}
+addEventListener('resize', sizeCanvas);
+sizeCanvas();
+
+gsap.to(state, {
+  frame: FRAME_COUNT - 1,
+  snap: 'frame',
+  ease: 'none',
+  onUpdate: draw,
+  scrollTrigger:{ trigger:'.seq', start:'top top', end:'bottom bottom', scrub: .5 }
+});
+
+/* beats choreography */
+const beats = [
+  {el:'.beat-1', in:0.02, out:0.30},
+  {el:'.beat-2', in:0.34, out:0.62},
+  {el:'.beat-3', out:1.01, in:0.66}
+];
+beats.forEach(b => {
+  const el = document.querySelector(b.el);
+  ScrollTrigger.create({
+    trigger:'.seq', start:'top top', end:'bottom bottom', scrub:true,
+    onUpdate(self){
+      const p = self.progress;
+      let o = 0;
+      if(p > b.in && p < b.out){
+        const span = b.out - b.in;
+        const local = (p - b.in) / span;
+        o = local < .18 ? local/.18 : (local > .82 ? (1-local)/.18 : 1);
+      }
+      gsap.set(el, {opacity: o, y: (1-o)*24});
+    }
+  });
+});
+</script>
+</body>
+</html>
